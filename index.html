@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Search</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Pokémon Search</h1>
+
+        <div class="main-section">
+            <div class="search-container">
+                <h2>Search Pokémon 🔍</h2>
+                <div class="input-wrapper">
+                    <input type="text" id="search" placeholder="Enter Pokémon name..." list="pokemon-list" oninput="filterDropdown()">
+                    <datalist id="pokemon-list"></datalist>
+                </div>
+
+                <div class="button-container">
+                    <button id="search-btn" onclick="searchPokemon()">Search</button>
+                    <button id="surprise-btn" onclick="surpriseMe()">Surprise Me 🎲</button>
+                </div>
+
+                <div id="pokemon-info"></div>
+
+                <div class="nav-buttons">
+                    <button id="prev-btn" onclick="navigatePokemon(-1)" disabled>⬅ Previous</button>
+                    <button id="next-btn" onclick="navigatePokemon(1)">Next ➡</button>
+                </div>
+            </div>
+
+            <div class="battle-container">
+                <h2>Battle Mode ⚔️</h2>
+                <div class="battle-inputs">
+                    <input type="text" id="pokemon1" placeholder="Enter Pokémon 1" list="pokemon-list-1">
+                    <datalist id="pokemon-list-1"></datalist>
+
+                    <input type="text" id="pokemon2" placeholder="Enter Pokémon 2" list="pokemon-list-2">
+                    <datalist id="pokemon-list-2"></datalist>
+                </div>
+
+                <button class="fight-btn" onclick="battlePokemon()">Fight!</button>
+                <div id="battle-result"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
