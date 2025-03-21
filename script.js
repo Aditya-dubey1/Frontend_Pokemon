@@ -2,7 +2,7 @@ let currentPokemonId = 1;
 let pokemonList = [];
 
 async function loadPokemonList() {
-    const response = await fetch("http://localhost:3000/api/pokemon");
+    const response = await fetch("https://backend-pokemon-pj95.onrender.com");
     pokemonList = await response.json();
     
     ["pokemon-list", "pokemon-list-1", "pokemon-list-2"].forEach(listId => {
@@ -35,7 +35,7 @@ async function searchPokemon() {
     const name = document.getElementById("search").value.toLowerCase();
     if (name.length < 4) return;
 
-    const response = await fetch(`http://localhost:3000/api/pokemon/${name}`);
+    const response = await fetch(`https://backend-pokemon-pj95.onrender.com/api/pokemon/${name}`);
     if (!response.ok) {
         document.getElementById("pokemon-info").innerHTML = "<p>Pokémon not found</p>";
         return;
@@ -48,7 +48,7 @@ async function searchPokemon() {
 }
 
 async function surpriseMe() {
-    const response = await fetch("http://localhost:3000/api/pokemon/random");
+    const response = await fetch("https://backend-pokemon-pj95.onrender.com/api/pokemon/random");
     const data = await response.json();
     currentPokemonId = data.id;
     updateNavButtons();
@@ -59,7 +59,7 @@ async function battlePokemon() {
     const pokemon1 = document.getElementById("pokemon1").value.toLowerCase();
     const pokemon2 = document.getElementById("pokemon2").value.toLowerCase();
 
-    const response = await fetch("http://localhost:3000/api/battle", {
+    const response = await fetch("https://backend-pokemon-pj95.onrender.com/api/battle", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ pokemon1, pokemon2 })
@@ -70,7 +70,7 @@ async function battlePokemon() {
 }
 
 async function playPokemonCry(name) {
-    const response = await fetch(`http://localhost:3000/api/pokemon/cry/${name}`);
+    const response = await fetch(`https://backend-pokemon-pj95.onrender.com/api/pokemon/cry/${name}`);
     const data = await response.json();
     if (data.cry) {
         const audio = new Audio(data.cry);
@@ -111,7 +111,7 @@ async function navigatePokemon(direction) {
 
     if (newId < 1 || newId > 898) return;
 
-    const response = await fetch(`http://localhost:3000/api/pokemon/id/${newId}`);
+    const response = await fetch(`https://backend-pokemon-pj95.onrender.com/api/pokemon/id/${newId}`);
     if (!response.ok) return;
 
     const data = await response.json();
